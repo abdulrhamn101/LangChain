@@ -1,5 +1,6 @@
 # Imports
 import os
+from dotenv import load_dotenv
 import streamlit as st
 import pandas as pd
 from langchain.agents import create_pandas_dataframe_agent
@@ -7,7 +8,6 @@ from langchain.llms import OpenAI
 import openai
 import streamlit.components.v1 as components
 openai.organization = "org-VHPYo0VBlaFsLZevBb8m2fNj"
-from config import apikey
 
 def show_sidebar():
     st.sidebar.title("About Me")
@@ -22,8 +22,11 @@ def show_sidebar():
 
 def main():
     counter = 0
-    # Define OpenAI API KEY
-    os.environ['OPENAI_API_KEY'] = apikey
+    # Load environment variables from .env file
+    load_dotenv()
+
+    # Access the API key from the environment variable
+    api_key = os.getenv("OPENAI_API_KEY")
 
     # Title and description
     st.title("AskAI App")
