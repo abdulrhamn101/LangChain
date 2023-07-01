@@ -2,3 +2,4 @@ streamlit
 pandas
 langchain==0.0.133
 openai
+python-dotenv
