@@ -83,7 +83,7 @@ def main():
     st.dataframe(filtered_data)
 
     # Define pandas df agent - 0 ~ no creativity vs 1 ~ very creative
-    agent = create_pandas_dataframe_agent(OpenAI(temperature=0.1),data,verbose=True) 
+    agent = create_pandas_dataframe_agent(OpenAI(temperature=0.5),data,verbose=True) 
     
     # Define Generated and Past Chat Arrays
     if 'generated' not in st.session_state: 
