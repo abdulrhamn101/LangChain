@@ -26,7 +26,7 @@ def main():
     load_dotenv()
 
     # Access the API key from the environment variable
-    api_key = os.environ["OPENAI_API_KEY"]
+    api_key = os.environ.get("OPENAI_API_KEY")
 
     # Title and description
     st.title("AskAI App")
