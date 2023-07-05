@@ -28,6 +28,17 @@ def main():
     # Access the API key from the environment variable
     api_key = os.getenv("OPENAI_API_KEY")
 
+    hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+    """
+    st.set_page_config(page_title='AskAI', layout="wide")
+
+    # Apply CSS style to hide Streamlit footer
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
     # Title and description
     st.title("AskAI App")
     st.write("Upload a CSV file, then speak with your data!")
@@ -83,7 +94,7 @@ def main():
     st.dataframe(filtered_data)
 
     # Define pandas df agent - 0 ~ no creativity vs 1 ~ very creative
-    agent = create_pandas_dataframe_agent(OpenAI(temperature=0.5),data,verbose=True) 
+    agent = create_pandas_dataframe_agent(OpenAI(temperature=0.1),data,verbose=True) 
     
     # Define Generated and Past Chat Arrays
     if 'generated' not in st.session_state: 
